@@ -1,5 +1,6 @@
 import React from 'react'
 // import * as BooksAPI from './BooksAPI'
+import Book from './components/Book'
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -92,22 +93,7 @@ class BooksApp extends React.Component {
                     <ol className="books-grid">
                       { this.state.booksCurrentReading.map(book => (
                         <li key={book.id}>
-                          <div className="book">
-                            <div className="book-top">
-                              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageUrl})` }}></div>
-                              <div className="book-shelf-changer">
-                                <select>
-                                  <option value="none" disabled>Move to...</option>
-                                  <option value="currentlyReading">Currently Reading</option>
-                                  <option value="wantToRead">Want to Read</option>
-                                  <option value="read">Read</option>
-                                  <option value="none">None</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div className="book-title">{book.title}</div>
-                            <div className="book-authors">{book.author}</div>
-                          </div>
+                          <Book book={book} />
                         </li>
                       ))}
                     </ol>
@@ -119,22 +105,7 @@ class BooksApp extends React.Component {
                     <ol className="books-grid">
                       { this.state.booksWantToRead.map(book => (
                         <li key={book.id}>
-                          <div className="book">
-                            <div className="book-top">
-                              <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${book.imageUrl})` }}></div>
-                              <div className="book-shelf-changer">
-                                <select>
-                                  <option value="none" disabled>Move to...</option>
-                                  <option value="currentlyReading">Currently Reading</option>
-                                  <option value="wantToRead">Want to Read</option>
-                                  <option value="read">Read</option>
-                                  <option value="none">None</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div className="book-title">{book.title}</div>
-                            <div className="book-authors">{book.author}</div>
-                          </div>
+                          <Book book={book} />
                         </li>
                       ))}
                     </ol>
@@ -146,22 +117,7 @@ class BooksApp extends React.Component {
                     <ol className="books-grid">
                       { this.state.booksRead.map(book => (
                         <li key={book.id}>
-                          <div className="book">
-                            <div className="book-top">
-                              <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${book.imageUrl})` }}></div>
-                              <div className="book-shelf-changer">
-                                <select>
-                                  <option value="none" disabled>Move to...</option>
-                                  <option value="currentlyReading">Currently Reading</option>
-                                  <option value="wantToRead">Want to Read</option>
-                                  <option value="read">Read</option>
-                                  <option value="none">None</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div className="book-title">{book.title}</div>
-                            <div className="book-authors">{book.author}</div>
-                          </div>
+                          <Book book={book} />
                         </li>
                       ))}
                     </ol>
