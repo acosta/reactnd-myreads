@@ -1,6 +1,7 @@
 import React from 'react'
 // import * as BooksAPI from './BooksAPI'
-import Book from './components/Book'
+import ListBooks from './components/ListBooks';
+
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -81,50 +82,12 @@ class BooksApp extends React.Component {
             </div>
           </div>
         ) : (
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <div className="list-books-content">
-              <div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Currently Reading</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-                      { this.state.booksCurrentReading.map(book => (
-                        <li key={book.id}>
-                          <Book book={book} />
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-                </div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Want to Read</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-                      { this.state.booksWantToRead.map(book => (
-                        <li key={book.id}>
-                          <Book book={book} />
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-                </div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Read</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-                      { this.state.booksRead.map(book => (
-                        <li key={book.id}>
-                          <Book book={book} />
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div>
+            <ListBooks
+              booksCurrentReading={this.state.booksCurrentReading}
+              booksWantToRead={this.state.booksWantToRead}
+              booksRead={this.state.booksRead}
+            />
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
             </div>
