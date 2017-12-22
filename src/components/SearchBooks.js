@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
-const SearchBooks = ({ onCloseSearchPage }) => {
+const SearchBooks = () => {
   return (
     <div className="search-books">
       <div className="search-books-bar">
-        <a className="close-search" onClick={onCloseSearchPage}>
+        <Link className="close-search" to="/">
           Close
-        </a>
+        </Link>
         <div className="search-books-input-wrapper">
           <input type="text" placeholder="Search by title or author" />
         </div>
