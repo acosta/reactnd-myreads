@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Book from './Book';
 
-const BookShelf = ({ title, books }) => {
+const BookShelf = ({ title, books, onShelfChange }) => {
   return (
     <div className="bookshelf">
       <h2 className="bookshelf-title">{title}</h2>
@@ -11,7 +11,7 @@ const BookShelf = ({ title, books }) => {
         <ol className="books-grid">
           {books.map(book => (
             <li key={book.id}>
-              <Book book={book} />
+              <Book book={book} onShelfChange={onShelfChange} />
             </li>
           ))}
         </ol>

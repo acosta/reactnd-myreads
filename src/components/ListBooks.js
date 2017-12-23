@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import BookShelf from './BookShelf';
 
-const ListBooks = ({ booksCurrentReading, booksWantToRead, booksRead }) => {
+const ListBooks = ({ booksCurrentReading, booksWantToRead, booksRead, onShelfChange }) => {
   return (
     <div className="list-books">
       <div className="list-books-title">
@@ -12,9 +12,9 @@ const ListBooks = ({ booksCurrentReading, booksWantToRead, booksRead }) => {
       </div>
       <div className="list-books-content">
         <div>
-          <BookShelf title={'Currently Reading'} books={booksCurrentReading} />
-          <BookShelf title={'Want to Read'} books={booksWantToRead} />
-          <BookShelf title={'Read'} books={booksRead} />
+          <BookShelf title={'Currently Reading'} books={booksCurrentReading} onShelfChange={onShelfChange} />
+          <BookShelf title={'Want to Read'} books={booksWantToRead} onShelfChange={onShelfChange} />
+          <BookShelf title={'Read'} books={booksRead} onShelfChange={onShelfChange} />
         </div>
       </div>
       <div className="open-search">
