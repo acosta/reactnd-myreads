@@ -27,7 +27,8 @@ const ListBooks = ({ booksCurrentReading, booksWantToRead, booksRead, onShelfCha
 ListBooks.propTypes = {
   booksCurrentReading: PropTypes.array.isRequired,
   booksWantToRead: PropTypes.array.isRequired,
-  booksRead: PropTypes.array.isRequired
+  booksRead: PropTypes.array.isRequired,
+  onShelfChange: PropTypes.func.isRequired
 };
 
 export default ListBooks;

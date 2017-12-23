@@ -35,7 +35,8 @@ const Book = ({ book, onShelfChange }) => {
 }
 
 Book.propTypes = {
-  book: PropTypes.object.isRequired
+  book: PropTypes.object.isRequired,
+  onShelfChange: PropTypes.func.isRequired
 }
 
 export default Book;
