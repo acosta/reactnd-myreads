@@ -93,7 +93,9 @@ class BooksApp extends React.Component {
             onShelfChange={this.moveBookToShelf}
           />
         )}/>
-        <Route path="/search" component={SearchBooks} />
+        <Route path="/search" render={() => (
+          <SearchBooks onShelfChange={this.moveBookToShelf}/>
+        )}/>
       </div>
     )
   }
