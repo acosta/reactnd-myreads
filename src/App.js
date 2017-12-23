@@ -94,7 +94,13 @@ class BooksApp extends React.Component {
           />
         )}/>
         <Route path="/search" render={() => (
-          <SearchBooks onShelfChange={this.moveBookToShelf}/>
+          <SearchBooks
+            onShelfChange={this.moveBookToShelf}
+            booksOnShelves={this.state.currentlyReading
+                            .concat(this.state.wantToRead)
+                            .concat(this.state.read)
+                          }
+          />
         )}/>
       </div>
     )
