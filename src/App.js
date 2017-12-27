@@ -49,22 +49,21 @@ class BooksApp extends React.Component {
   updateBookShelf = (newShelf, book) => {
     book.shelf = newShelf
     switch(newShelf) {
-      case 'currentlyReading': {
-        let { currentlyReading } = this.state
-        currentlyReading.push(book)
-        this.setState({ currentlyReading })
+      case 'currentlyReading':
+        this.setState(previousState => {
+          return { currentlyReading: previousState.currentlyReading.concat([book]) }
+        })
         break
-      }
       case 'wantToRead': {
-        let { wantToRead } = this.state
-        wantToRead.push(book)
-        this.setState({ wantToRead })
+        this.setState(previousState => {
+          return { wantToRead: previousState.wantToRead.concat([book]) }
+        })
         break
       }
       case 'read': {
-        let { read } = this.state
-        read.push(book)
-        this.setState({ read })
+        this.setState(previousState => {
+          return { read: previousState.read.concat([book]) }
+        })
         break
       }
       default:
