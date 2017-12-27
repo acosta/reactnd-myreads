@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import Loader from 'react-loader'
 import PropTypes from 'prop-types'
 import * as BooksAPI from '../BooksAPI'
 
 import Book from './Book';
 
 class SearchBooks extends Component {
-  state = {
-    query: '',
-    searchResults: []
+  constructor(props) {
+    super(props)
+    this.state = {
+      query: '',
+      searchResults: [],
+      isLoaded: true
+    }
   }
 
   updateQuery = (query) => {
@@ -18,14 +23,17 @@ class SearchBooks extends Component {
         searchResults: []
       })
     } else {
-      this.setState({ query: query.trim() })
+      this.setState({
+        query: query.trim(),
+        isLoaded: false
+      })
       BooksAPI.search(query).then((books) => {
         if (books.error) {
           books = []
         } else {
           books.map(book => (this.props.booksOnShelves.filter((b) => b.id === book.id).map(b => book.shelf = b.shelf)))
         }
-        this.setState({ searchResults: books})
+        this.setState({ searchResults: books, isLoaded: true})
       })
     }
   }
@@ -47,6 +55,7 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
+        <Loader loaded={this.state.isLoaded} />
         {query && (searchResults.length === 0
             ? (<p>No results found for <em>"{query}"</em></p>)
             : (<p>Showing {searchResults.length} books for <em>"{query}"</em></p>))}

@@ -1,19 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
+import Loader from 'react-loader'
 import * as BooksAPI from './BooksAPI'
 import ListBooks from './components/ListBooks'
 import SearchBooks from './components/SearchBooks'
 
 import './App.css'
 
-class BooksApp extends React.Component {
-  state = {
-    currentlyReading: [],
-    wantToRead: [],
-    read: []
+class BooksApp extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentlyReading: [],
+      wantToRead: [],
+      read: [],
+      isLoaded: true
+    }
   }
 
   componentDidMount() {
+    this.setState({ isLoaded: false })
     BooksAPI.getAll().then((books) => {
       const currentlyReading = books.filter((book) => book.shelf === 'currentlyReading')
       const wantToRead = books.filter((book) => book.shelf === 'wantToRead')
@@ -21,7 +27,8 @@ class BooksApp extends React.Component {
       this.setState({
         currentlyReading,
         wantToRead,
-        read
+        read,
+        isLoaded: true
       })
     })
   }
@@ -84,6 +91,7 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
+        <Loader loaded={this.state.isLoaded} />
         <Route exact path="/" render={() => (
           <ListBooks
             booksCurrentReading={this.state.currentlyReading}
