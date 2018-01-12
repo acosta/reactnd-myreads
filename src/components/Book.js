@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Book = ({ book, onShelfChange }) => {
-  const changeShelf = (event) => {
-    const shelf = event.target.value
-    onShelfChange(shelf, book)
-  }
+  const changeShelf = event => {
+    const shelf = event.target.value;
+    onShelfChange(shelf, book);
+  };
 
   return (
     <div className="book">
@@ -20,7 +20,9 @@ const Book = ({ book, onShelfChange }) => {
         />
         <div className="book-shelf-changer">
           <select value={book.shelf || 'none'} onChange={changeShelf}>
-            <option value="none" disabled>Move to...</option>
+            <option value="none" disabled>
+              Move to...
+            </option>
             <option value="currentlyReading">Currently Reading</option>
             <option value="wantToRead">Want to Read</option>
             <option value="read">Read</option>
@@ -29,14 +31,14 @@ const Book = ({ book, onShelfChange }) => {
         </div>
       </div>
       <div className="book-title">{book.title}</div>
-      <div className="book-authors">{book.authors ? book.authors.join(", ") : 'Unknown'}</div>
+      <div className="book-authors">{book.authors ? book.authors.join(', ') : 'Unknown'}</div>
     </div>
   );
-}
+};
 
 Book.propTypes = {
   book: PropTypes.object.isRequired,
   onShelfChange: PropTypes.func.isRequired
-}
+};
 
 export default Book;
